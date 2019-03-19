@@ -6,7 +6,7 @@ provider "kubernetes" {
 
 resource "kubernetes_pod" "echo" {
   metadata {
-    name = "echo-example"
+    name = "hackathon-awesomeness"
     labels {
       App = "echo"
     }
@@ -14,7 +14,7 @@ resource "kubernetes_pod" "echo" {
   spec {
     container {
       image = "hashicorp/http-echo:0.2.1"
-      name  = "example2"
+      name  = "hackathon-awesomeness-for-real"
       args = ["-listen=:80", "-text='Hello World'"]
       port {
         container_port = 80
@@ -25,7 +25,7 @@ resource "kubernetes_pod" "echo" {
 
 resource "kubernetes_service" "echo" {
   metadata {
-    name = "echo-example"
+    name = "hackathon-awesomeness"
   }
   spec {
     selector {
@@ -41,7 +41,7 @@ resource "kubernetes_service" "echo" {
 
 resource "kubernetes_resource_quota" "example" {
   metadata {
-    name = "echo-example"
+    name = "hackathon-awesomeness"
   }
   spec {
     hard {
