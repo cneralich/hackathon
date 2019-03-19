@@ -11,6 +11,7 @@ pod_tag = rule {
     all pods as index, r {
       all mandatory_tags as t {
         r.applied.metadata contains t
+      }  
     }
   }
 }
