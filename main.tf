@@ -1,3 +1,14 @@
+terraform {
+  backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "lanceplarsenv2"
+
+    workspaces {
+      prefix = "k8s-"
+    }
+  }
+}
+
 provider "kubernetes" {
     host = "${var.host_address}"
     token = "${var.token}"
