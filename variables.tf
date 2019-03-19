@@ -3,7 +3,7 @@ variable "host_address" {}
 variable "token" {}
 
 variable "name" {
-  default = "hackathon-1"
+  default = "hackathon-2"
 }
 
 variable "vault_addr" {}
