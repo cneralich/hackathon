@@ -2,4 +2,6 @@ variable "host_address" {}
 
 variable "token" {}
 
-variable "name" {}
+variable "name" {
+  default = "hackathon-1"
+}
