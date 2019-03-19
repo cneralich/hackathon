@@ -20,7 +20,7 @@ get_kubernetes_pods = func() {
 kubernetes_pods = get_kubernetes_pods()
 
 # Instance tag rule
-pods_tags = rule {
+pod_tags = rule {
     all kubernetes_pods as _, pods {
     	all pods as index, r {
             all mandatory_tags as t {
@@ -31,5 +31,5 @@ pods_tags = rule {
 }
 
 main = rule {
-    (instance_tags) else true
+    (pod_tags) else true
 }
