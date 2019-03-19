@@ -38,3 +38,15 @@ resource "kubernetes_service" "echo" {
     type = "LoadBalancer"
  }
 }
+
+resource "kubernetes_resource_quota" "example" {
+  metadata {
+    name = "echo-example"
+  }
+  spec {
+    hard {
+      pods = 5
+    }
+    scopes = ["BestEffort"]
+  }
+}
