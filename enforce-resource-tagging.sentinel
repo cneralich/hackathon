@@ -1,0 +1,35 @@
+import "tfplan"
+
+# Warning, this is case sensitive.  
+# This is on purpose especially for organizations that do cost analysis on tag names.
+# where case sensitivity will cause grouping issues
+
+mandatory_tags = [
+  "name",
+]
+
+# Get all AWS instances contained in all modules being used
+get_kubernetes_pods = func() {
+    pods = []
+    for tfplan.module_paths as path {
+        pods += values(tfplan.module(path).resources.kubernetes_pod) else []
+    }
+    return pods
+}
+    
+kubernetes_pods = get_kubernetes_pods()
+
+# Instance tag rule
+pods_tags = rule {
+    all kubernetes_pods as _, pods {
+    	all pods as index, r {
+            all mandatory_tags as t {
+                r.applied.metadata contains t
+            }
+        }
+    }
+}
+
+main = rule {
+    (instance_tags) else true
+}
