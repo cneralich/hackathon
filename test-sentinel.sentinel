@@ -1,21 +1,11 @@
 import "tfplan"
 
-pods = tfplan.resources.kubernetes_pod
-
-mandatory_tags = [
-  "derp",
-]
-
-pod_tag = rule {
-  all pods as name, pods {
-    all pods as index, r {
+main = rule {
+  all tfplan.resources.kubernetes_pod as _, pods {
+    all pods as _, r {
       all mandatory_tags as t {
         r.applied.metadata contains t
-      }  
+      }
     }
   }
-}
-
-main = rule {
-  (pod_tag) else true
 }
