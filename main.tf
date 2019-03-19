@@ -1,5 +1,5 @@
 provider "kubernetes" {
-    host = "${var.host}"
+    host = "${var.host_address}"
     token = "${var.token}"
     insecure = true
 }
