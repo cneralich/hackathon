@@ -45,7 +45,7 @@ resource "kubernetes_resource_quota" "example" {
   }
   spec {
     hard {
-      pods = 5
+      pods = 10
     }
     scopes = ["BestEffort"]
   }
