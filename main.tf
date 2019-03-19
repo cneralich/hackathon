@@ -15,7 +15,7 @@ resource "kubernetes_pod" "echo" {
     container {
       image = "hashicorp/http-echo:0.2.1"
       name  = "hackathon-awesomeness-for-real"
-      args = ["-listen=:80", "-text='Hello World'"]
+      args = ["-listen=:80", "-text='Brian Lee, 20 over par through 4'"]
       port {
         container_port = 80
       }
