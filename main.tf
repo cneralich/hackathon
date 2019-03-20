@@ -22,7 +22,7 @@ provider "kubernetes" {
 resource "kubernetes_pod" "echo" {
   metadata {
     name = "${var.name}"
-    labels {
+    labels = {
       App = "echo"
     }
   }
@@ -43,7 +43,7 @@ resource "kubernetes_service" "echo" {
     name = "${var.name}"
   }
   spec {
-    selector {
+    selector = {
       App = "${kubernetes_pod.echo.metadata.0.labels.App}"
     }
     port {
@@ -59,7 +59,7 @@ resource "kubernetes_resource_quota" "example" {
     name = "${var.name}"
   }
   spec {
-    hard {
+    hard = {
       pods = 5
     }
     scopes = ["BestEffort"]
