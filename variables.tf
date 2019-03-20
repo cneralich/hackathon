@@ -4,6 +4,8 @@ variable "name" {
   default = "hackathon-5"
 }
 
-variable "vault_addr" {}
+variable "token" {}
 
-variable "vault_user" {}
+#variable "vault_addr" {}
+
+#variable "vault_user" {}
