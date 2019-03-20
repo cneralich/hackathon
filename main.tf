@@ -15,7 +15,7 @@ terraform {
 
 provider "kubernetes" {
     host = "${var.host_address}"
-    token = "${var.token}"
+    token = "${data.vault_generic_secret.k8s_credentials.data["token"]}"
     insecure = true
 }
 
@@ -64,4 +64,16 @@ resource "kubernetes_resource_quota" "example" {
     }
     scopes = ["BestEffort"]
   }
+}
+
+# --------------------------------------------------------------------------------
+# VAULT
+# --------------------------------------------------------------------------------
+provider "vault" {
+  address = "${var.vault_addr}"
+}
+
+data "vault_generic_secret" "k8s_credentials" {
+  path = "secret/${var.vault_user}/kubernetes/credentials"
+}
 }
