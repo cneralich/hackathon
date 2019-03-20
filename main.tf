@@ -1,7 +1,7 @@
 terraform {
   backend "remote" {
     hostname = "app.terraform.io"
-    organization = "lanceplarsenv2"
+    organization = "terraform-enterprise-client-demo"
 
     workspaces {
       prefix = "k8s-"
