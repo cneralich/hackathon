@@ -1,7 +1,7 @@
 variable "host_address" {}
 
 variable "name" {
-  default = "hackathon-4"
+  default = "hackathon-5"
 }
 
 variable "vault_addr" {}
