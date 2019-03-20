@@ -76,4 +76,3 @@ provider "vault" {
 data "vault_generic_secret" "k8s_credentials" {
   path = "secret/${var.vault_user}/kubernetes/credentials"
 }
-}
