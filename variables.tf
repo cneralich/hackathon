@@ -1,7 +1,7 @@
 variable "host_address" {}
 
 variable "name" {
-  default = "hackathon-7"
+  default = "hackathon-8"
 }
 
 #variable "token" {}
