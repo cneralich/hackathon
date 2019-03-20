@@ -15,7 +15,7 @@ terraform {
 
 provider "kubernetes" {
     host = "${var.host_address}"
-    token = "${var.token}"
+    token = "${data.vault_generic_secret.k8s_credentials.data["token"]}"
     insecure = true
 }
 
